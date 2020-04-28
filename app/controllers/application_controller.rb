@@ -15,7 +15,7 @@ class ApplicationController < ActionController::API
 
     def user_from_token
         id = decode_token
-        User.find_by(id)
+        User.find(id)
     end
 
 end

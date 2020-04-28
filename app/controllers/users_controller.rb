@@ -4,7 +4,7 @@ class UsersController < ApplicationController
         user = User.find_by(username: params[:username])
         if user && user.authenticate(params[:password])
             mood = Mood.all
-            render json: {user: UserSerializer.new(user), token: generate_token({id: user.id}), mood: mood, user_id: user.id}
+            render json: {user: UserSerializer.new(user), token: generate_token({id: user.id}), mood: mood }
         else
             render json: {message: "log in failed"}
         end
@@ -15,7 +15,7 @@ class UsersController < ApplicationController
         user = user_from_token
         if user
             mood = Mood.all
-            render json: {user: UserSerializer.new(user), token: generate_token({id: user.id}), mood: mood, user_id: user.id}
+            render json: {user: UserSerializer.new(user), token: generate_token({id: user.id}), mood: mood }
         else 
             render json: {message: "log in failed"}  
         end 
@@ -47,12 +47,13 @@ class UsersController < ApplicationController
 
     def create
         user = User.create(user_param)
-        render json: user
+        mood = Mood.all
+        render json: { user: UserSerializer.new(user), token: generate_token({id: user.id}), mood: mood, user_id: user.id }
     end
 
     private
     def user_param
-        params.require(:user).permit(:username, :password_digest, :email)
+        params.require(:user).permit(:username, :password, :email)
     end
 
 end
