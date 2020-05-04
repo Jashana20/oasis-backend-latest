@@ -13,6 +13,7 @@ class EntriesController < ApplicationController
     def create
         entry = Entry.create(entry_params)
         if (entry.valid?)
+            params[:questions].map{|question| Answer.create(entry_id: entry.id, question_id:  question["question_id"], question_answer: question["question_answer"])} 
         render json: entry
         else 
         render json: {error: "error"}

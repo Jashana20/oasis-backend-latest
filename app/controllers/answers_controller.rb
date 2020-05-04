@@ -18,11 +18,11 @@ class AnswersController < ApplicationController
         end
     end
     
-    def update
-        answer = Answer.find(params[:id])
-        answer.update(journal_entry: params[:journal_entry])
-        render json: answer, include: [:mood, :user]
-    end
+    # def update
+    #     answer = Answer.find(params[:id])
+    #     answer.update(journal_entry: params[:journal_entry])
+    #     render json: answer, include: [:mood, :user]
+    # end
     
     # def destroy
     #     entry = Entry.find(params[:id])
@@ -31,6 +31,6 @@ class AnswersController < ApplicationController
 
     private 
     def answer_params
-        params.require(:entry).permit(:question_answer, :question_id)
+        params.require(:answer).permit(:question_answer, :question_id, :entry_id)
     end 
 end
