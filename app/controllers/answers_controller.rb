@@ -17,6 +17,10 @@ class AnswersController < ApplicationController
         render json: {error: "error"}
         end
     end
+
+    def user_answers 
+        user_answers = Answer.map{|answer| }
+    end 
     
     # def update
     #     answer = Answer.find(params[:id])
