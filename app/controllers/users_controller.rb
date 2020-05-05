@@ -45,6 +45,12 @@ class UsersController < ApplicationController
         render json: users
     end
 
+    def showAnswers
+        user = User.find_by(id: params[:id])
+        answers = user.entries.last.answers
+        render json: answers
+    end 
+
     def create
         user = User.create(user_param)
         mood = Mood.all

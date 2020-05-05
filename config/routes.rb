@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   # post "/create", to: "users#create"
   get "/index", to: "users#index"
   post "/index", to: "users#create"
+  get "/showAnswers/:id", to: "users#showAnswers"
 end

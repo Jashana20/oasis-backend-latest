@@ -18,9 +18,9 @@ class AnswersController < ApplicationController
         end
     end
 
-    def user_answers 
-        user_answers = Answer.map{|answer| }
-    end 
+    # def user_answers 
+    #     user_answers = Answer.map{|answer| entry.id === }
+    # end 
     
     # def update
     #     answer = Answer.find(params[:id])
